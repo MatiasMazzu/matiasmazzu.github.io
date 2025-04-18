@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +15,7 @@
             --danger-color: #e74c3c;
             --purchase-color: #9b59b6;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
@@ -22,13 +23,13 @@
             background-color: #f5f5f5;
             color: var(--dark-color);
         }
-        
+
         .container {
             max-width: 500px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         header {
             background-color: var(--primary-color);
             color: white;
@@ -37,22 +38,22 @@
             border-radius: 8px 8px 0 0;
             margin-bottom: 20px;
         }
-        
+
         h1 {
             margin: 0;
             font-size: 24px;
         }
-        
+
         .form-group {
             margin-bottom: 20px;
         }
-        
+
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
         }
-        
+
         input[type="number"],
         input[type="text"],
         select {
@@ -63,23 +64,23 @@
             font-size: 16px;
             box-sizing: border-box;
         }
-        
+
         .btn-group {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             margin-bottom: 20px;
         }
-        
+
         .btn-group.group-of-4 {
             grid-template-columns: repeat(2, 1fr);
         }
-        
+
         .operation-type-toggle {
             display: flex;
             margin-bottom: 20px;
         }
-        
+
         .operation-btn {
             flex: 1;
             padding: 15px;
@@ -90,25 +91,25 @@
             font-size: 16px;
             font-weight: bold;
         }
-        
+
         .operation-btn:first-child {
             border-radius: 6px 0 0 6px;
         }
-        
+
         .operation-btn:last-child {
             border-radius: 0 6px 6px 0;
         }
-        
+
         .operation-btn.active[data-operation="Venta"] {
             background-color: var(--secondary-color);
             color: white;
         }
-        
+
         .operation-btn.active[data-operation="Compra"] {
             background-color: var(--purchase-color);
             color: white;
         }
-        
+
         .standard-btn {
             background-color: var(--light-color);
             color: var(--dark-color);
@@ -120,22 +121,22 @@
             transition: all 0.3s;
             text-align: center;
         }
-        
+
         .standard-btn.active {
             background-color: var(--primary-color);
             color: white;
         }
-        
+
         .standard-btn.disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-        
+
         .currency-toggle {
             display: flex;
             margin-bottom: 10px;
         }
-        
+
         .currency-btn {
             flex: 1;
             padding: 10px;
@@ -144,29 +145,29 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        
+
         .currency-btn:first-child {
             border-radius: 6px 0 0 6px;
         }
-        
+
         .currency-btn:nth-child(2) {
             border-radius: 0;
         }
-        
+
         .currency-btn:last-child {
             border-radius: 0 6px 6px 0;
         }
-        
+
         .currency-btn.active {
             background-color: var(--primary-color);
             color: white;
         }
-        
+
         .currency-btn.disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-        
+
         .btn-submit {
             background-color: var(--primary-color);
             color: white;
@@ -179,27 +180,27 @@
             margin-top: 20px;
             transition: background-color 0.3s;
         }
-        
+
         .btn-submit:hover {
             background-color: #2980b9;
         }
-        
+
         .btn-submit.sale {
             background-color: var(--secondary-color);
         }
-        
+
         .btn-submit.sale:hover {
             background-color: #27ae60;
         }
-        
+
         .btn-submit.purchase {
             background-color: var(--purchase-color);
         }
-        
+
         .btn-submit.purchase:hover {
             background-color: #8e44ad;
         }
-        
+
         .confirmation {
             position: fixed;
             top: 0;
@@ -217,37 +218,38 @@
             pointer-events: none;
             transition: opacity 0.3s;
         }
-        
+
         .confirmation.show {
             opacity: 1;
             pointer-events: all;
         }
-        
+
         .confirmation i {
             font-size: 80px;
             margin-bottom: 20px;
         }
-        
+
         .confirmation i.sale {
             color: var(--secondary-color);
         }
-        
+
         .confirmation i.purchase {
             color: var(--purchase-color);
         }
-        
+
         .hidden {
             display: none;
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <header>
             <h1>Registro de Operaciones</h1>
         </header>
-        
+
         <form id="operationForm">
             <div class="form-group">
                 <label>Tipo de Operación:</label>
@@ -256,55 +258,59 @@
                     <div class="operation-btn" data-operation="Compra">Compra</div>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label for="amount">Monto:</label>
                 <input type="text" id="amount" placeholder="Ingrese el monto" required>
                 <div id="formattedAmount" style="margin-top: 5px; color: #666; font-size: 14px;"></div>
-                
+
                 <div class="currency-toggle" style="margin-top: 10px;">
                     <div class="currency-btn active" data-currency="ARS">ARS</div>
                     <div class="currency-btn" data-currency="USD">USD</div>
                     <div class="currency-btn" data-currency="USDT">USDT</div>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label>Método de Pago:</label>
                 <div class="btn-group">
-                    <button type="button" class="standard-btn payment-btn active" data-payment="Efectivo">Efectivo</button>
+                    <button type="button" class="standard-btn payment-btn active"
+                        data-payment="Efectivo">Efectivo</button>
                     <button type="button" class="standard-btn payment-btn" data-payment="Tarjeta">Tarjeta</button>
-                    <button type="button" class="standard-btn payment-btn" data-payment="Transferencia">Transferencia</button>
+                    <button type="button" class="standard-btn payment-btn"
+                        data-payment="Transferencia">Transferencia</button>
                     <button type="button" class="standard-btn payment-btn" data-payment="Crypto">Crypto</button>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label>Categoría:</label>
                 <div class="btn-group group-of-4">
                     <button type="button" class="standard-btn category-btn" data-category="Torneo">Torneo</button>
-                    <button type="button" class="standard-btn category-btn active" data-category="Cafebar">Cafebar</button>
+                    <button type="button" class="standard-btn category-btn active"
+                        data-category="Cafebar">Cafebar</button>
                     <button type="button" class="standard-btn category-btn" data-category="Producto">Producto</button>
-                    <button type="button" class="standard-btn category-btn" data-category="Singles TCG">Singles TCG</button>
+                    <button type="button" class="standard-btn category-btn" data-category="Singles TCG">Singles
+                        TCG</button>
                 </div>
             </div>
-            
+
             <div class="form-group">
                 <label for="description">Descripción:</label>
                 <input type="text" id="description" placeholder="Breve descripción de la operación" required>
             </div>
-            
+
             <button type="submit" class="btn-submit sale" id="submitButton">Registrar Venta</button>
         </form>
     </div>
-    
+
     <div class="confirmation" id="confirmation">
         <i class="fas fa-check-circle sale" id="confirmationIcon"></i>
         <h2 id="confirmationText">¡Venta Registrada!</h2>
     </div>
-    
+
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Seleccionar elementos
             const form = document.getElementById('operationForm');
             const operationBtns = document.querySelectorAll('.operation-btn');
@@ -315,19 +321,19 @@
             const confirmationIcon = document.getElementById('confirmationIcon');
             const confirmationText = document.getElementById('confirmationText');
             const submitButton = document.getElementById('submitButton');
-            
+
             // Variables para almacenar selecciones
             let selectedOperation = 'Venta';
             let selectedCategory = 'Cafebar';
             let selectedPayment = 'Efectivo';
             let selectedCurrency = 'ARS';
-            
+
             // Función para actualizar la interfaz basada en las selecciones
             function updateInterface() {
                 // Actualizar botón de enviar
                 submitButton.textContent = `Registrar ${selectedOperation}`;
                 submitButton.className = selectedOperation === 'Venta' ? 'btn-submit sale' : 'btn-submit purchase';
-                
+
                 // Verificar si la moneda es USDT
                 if (selectedCurrency === 'USDT') {
                     // Para USDT solo se permite crypto
@@ -357,91 +363,91 @@
                     });
                 }
             }
-            
+
             // Event listeners para botones de tipo de operación
             operationBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     operationBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     selectedOperation = this.dataset.operation;
                     updateInterface();
                 });
             });
-            
+
             // Event listeners para botones de categoría
             categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     categoryBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     selectedCategory = this.dataset.category;
                 });
             });
-            
+
             // Event listeners para botones de método de pago
             paymentBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     if (this.classList.contains('disabled')) return;
-                    
+
                     paymentBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     selectedPayment = this.dataset.payment;
-                    
+
                     // Si se selecciona Crypto, forzar USDT como moneda
                     if (selectedPayment === 'Crypto') {
                         currencyBtns.forEach(b => b.classList.remove('active'));
                         document.querySelector('.currency-btn[data-currency="USDT"]').classList.add('active');
                         selectedCurrency = 'USDT';
                     }
-                    
+
                     updateInterface();
                 });
             });
-            
+
             // Event listeners para botones de moneda
             currencyBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     currencyBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     selectedCurrency = this.dataset.currency;
-                    
+
                     updateInterface();
                 });
             });
-            
+
             // Función para formatear números con separadores de miles
             function formatNumber(num) {
                 // Convertir a string y eliminar cualquier carácter no numérico excepto punto decimal
                 let numStr = num.toString().replace(/[^\d.]/g, '');
-                
+
                 // Dividir en parte entera y decimal
                 let parts = numStr.split('.');
                 let wholePart = parts[0];
                 let decimalPart = parts.length > 1 ? '.' + parts[1] : '';
-                
+
                 // Agregar separadores de miles a la parte entera
                 wholePart = wholePart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                
+
                 // Juntar todo nuevamente
                 return wholePart + decimalPart;
             }
-            
+
             // Función para desformatear el número (quitar separadores)
             function unformatNumber(formattedNum) {
                 return formattedNum.replace(/,/g, '');
             }
-            
+
             // Event listener para el campo de monto
             const amountInput = document.getElementById('amount');
             const formattedAmountDisplay = document.getElementById('formattedAmount');
-            
-            amountInput.addEventListener('input', function(e) {
+
+            amountInput.addEventListener('input', function (e) {
                 // Obtener el valor actual y la posición del cursor
                 const value = this.value;
                 const cursorPosition = this.selectionStart;
-                
+
                 // Eliminar caracteres no numéricos (excepto punto decimal)
                 const cleanValue = value.replace(/[^\d.]/g, '');
-                
+
                 // Actualizar el display formateado
                 if (cleanValue) {
                     const formatted = formatNumber(cleanValue);
@@ -450,10 +456,10 @@
                     formattedAmountDisplay.textContent = '';
                 }
             });
-            
+
             // Actualizar el formato cuando cambia la moneda
             currencyBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', function () {
                     const value = amountInput.value;
                     if (value) {
                         const cleanValue = value.replace(/[^\d.]/g, '');
@@ -461,37 +467,64 @@
                     }
                 });
             });
-            
+
             // Event listener para envío de formulario
-            form.addEventListener('submit', function(e) {
+            form.addEventListener('submit', function (e) {
                 e.preventDefault();
-                
+
                 // Obtener valores del formulario
                 let amount = unformatNumber(document.getElementById('amount').value);
                 const description = document.getElementById('description').value;
-                
+
                 // Validar que se hayan seleccionado todos los campos
                 if (!amount || !description) {
                     alert('Por favor, complete todos los campos');
                     return;
                 }
-                
+
                 // Si es una compra, hacer el monto negativo
                 if (selectedOperation === 'Compra') {
                     amount = -Math.abs(amount);
                 }
-                
+
+                // Función para obtener la categoría en el formato requerido
+                function getFormattedCategory() {
+                    return `${selectedOperation.toUpperCase()} ${selectedCategory.toUpperCase()}`;
+                }
+
+                // Función para obtener el método de pago en el formato requerido
+                function getFormattedPaymentMethod() {
+                    if (selectedPayment === 'Tarjeta') {
+                        return 'PAYWAY (ARS)';
+                    } else if (selectedPayment === 'Efectivo') {
+                        return `EFVO CITADEL (${selectedCurrency})`;
+                    } else if (selectedPayment === 'Transferencia') {
+                        return `CITADEL (${selectedCurrency})`;
+                    } else if (selectedPayment === 'Crypto') {
+                        return 'BINANCE MAXI (USDT)';
+                    }
+                    return selectedPayment;
+                }
+
+                // Función para obtener la moneda en el formato requerido
+                function getFormattedCurrency() {
+                    if (selectedCurrency === 'ARS') {
+                        return 'PESOS';
+                    } else {
+                        return selectedCurrency;
+                    }
+                }
+
                 // Aquí conectaríamos con Make para enviar los datos
                 const data = {
-                    operationType: selectedOperation,
+                    category: getFormattedCategory(),
                     amount: amount,
-                    currency: selectedCurrency,
-                    category: selectedCategory,
+                    currency: getFormattedCurrency(),
                     description: description,
-                    paymentMethod: selectedPayment,
+                    paymentMethod: getFormattedPaymentMethod(),
                     date: new Date().toISOString()
                 };
-                
+
                 console.log('Datos a enviar:', data);
 
                 // Realizar la llamada real al webhook de Make
@@ -502,61 +535,62 @@
                     },
                     body: JSON.stringify(data)
                 })
-                .then(response => {
-                    // Actualizar el icono y texto de confirmación
-                    if (selectedOperation === 'Venta') {
-                        confirmationIcon.className = 'fas fa-check-circle sale';
-                        confirmationText.textContent = '¡Venta Registrada!';
-                    } else {
-                        confirmationIcon.className = 'fas fa-check-circle purchase';
-                        confirmationText.textContent = '¡Compra Registrada!';
-                    }
-                    
-                    // Mostrar confirmación
-                    confirmation.classList.add('show');
-                    
-                    // Ocultar confirmación después de 2 segundos
-                    setTimeout(function() {
-                        confirmation.classList.remove('show');
-                        
-                        // Restablecer formulario
-                        form.reset();
-                        // Mantener venta como opción predeterminada
-                        operationBtns.forEach(b => b.classList.remove('active'));
-                        document.querySelector('.operation-btn[data-operation="Venta"]').classList.add('active');
-                        selectedOperation = 'Venta';
-                        
-                        // Restablecer categoría a Cafebar
-                        categoryBtns.forEach(b => b.classList.remove('active'));
-                        document.querySelector('.category-btn[data-category="Cafebar"]').classList.add('active');
-                        selectedCategory = 'Cafebar';
-                        
-                        // Restablecer método de pago a Efectivo
-                        paymentBtns.forEach(b => b.classList.remove('active'));
-                        document.querySelector('.payment-btn[data-payment="Efectivo"]').classList.add('active');
-                        selectedPayment = 'Efectivo';
-                        
-                        // Restablecer moneda a ARS
-                        currencyBtns.forEach(b => b.classList.remove('active'));
-                        document.querySelector('.currency-btn[data-currency="ARS"]').classList.add('active');
-                        selectedCurrency = 'ARS';
-                        
-                        // Limpiar el campo formateado
-                        formattedAmountDisplay.textContent = '';
-                        
-                        // Actualizar interfaz
-                        updateInterface();
-                    }, 2000);
-                }, 1000);
-                })
+                    .then(response => {
+                        // Actualizar el icono y texto de confirmación
+                        if (selectedOperation === 'Venta') {
+                            confirmationIcon.className = 'fas fa-check-circle sale';
+                            confirmationText.textContent = '¡Venta Registrada!';
+                        } else {
+                            confirmationIcon.className = 'fas fa-check-circle purchase';
+                            confirmationText.textContent = '¡Compra Registrada!';
+                        }
+
+                        // Mostrar confirmación
+                        confirmation.classList.add('show');
+
+                        // Ocultar confirmación después de 2 segundos
+                        setTimeout(function () {
+                            confirmation.classList.remove('show');
+
+                            // Restablecer formulario
+                            form.reset();
+                            // Mantener venta como opción predeterminada
+                            operationBtns.forEach(b => b.classList.remove('active'));
+                            document.querySelector('.operation-btn[data-operation="Venta"]').classList.add('active');
+                            selectedOperation = 'Venta';
+
+                            // Restablecer categoría a Cafebar
+                            categoryBtns.forEach(b => b.classList.remove('active'));
+                            document.querySelector('.category-btn[data-category="Cafebar"]').classList.add('active');
+                            selectedCategory = 'Cafebar';
+
+                            // Restablecer método de pago a Efectivo
+                            paymentBtns.forEach(b => b.classList.remove('active'));
+                            document.querySelector('.payment-btn[data-payment="Efectivo"]').classList.add('active');
+                            selectedPayment = 'Efectivo';
+
+                            // Restablecer moneda a ARS
+                            currencyBtns.forEach(b => b.classList.remove('active'));
+                            document.querySelector('.currency-btn[data-currency="ARS"]').classList.add('active');
+                            selectedCurrency = 'ARS';
+
+                            // Limpiar el campo formateado
+                            formattedAmountDisplay.textContent = '';
+
+                            // Actualizar interfaz
+                            updateInterface();
+                        }, 2000);
+                    }, 1000);
+            })
                 .catch(error => {
                     console.error('Error al enviar datos:', error);
                     alert('Error al registrar la operación. Por favor, intente nuevamente.');
                 });
-            
+
             // Inicializar la interfaz
             updateInterface();
         });
     </script>
 </body>
+
 </html>
