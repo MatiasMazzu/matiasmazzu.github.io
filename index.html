@@ -515,6 +515,16 @@
                     }
                 }
 
+                // Función para obtener la fecha con formato DD/MM/YYYY
+                function getFormattedDate() {
+                    const now = new Date();
+                    const day = String(now.getDate()).padStart(2, '0');
+                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Los meses en JS van de 0-11
+                    const year = now.getFullYear();
+                    
+                    return `${day}/${month}/${year}`;
+                }
+
                 // Aquí conectaríamos con Make para enviar los datos
                 const data = {
                     category: getFormattedCategory(),
@@ -522,7 +532,7 @@
                     currency: getFormattedCurrency(),
                     description: description,
                     paymentMethod: getFormattedPaymentMethod(),
-                    date: new Date().toISOString()
+                    date: getFormattedDate()
                 };
 
                 console.log('Datos a enviar:', data);
