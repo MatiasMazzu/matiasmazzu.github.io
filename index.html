@@ -25,7 +25,7 @@
         }
 
         .container {
-            max-width: 500px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -54,15 +54,21 @@
             font-weight: bold;
         }
 
-        input[type="number"],
         input[type="text"],
-        select {
+        input[type="number"],
+        select,
+        textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
             border-radius: 6px;
             font-size: 16px;
             box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
         }
 
         .btn-group {
@@ -240,6 +246,220 @@
         .hidden {
             display: none;
         }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background-color: var(--light-color);
+            border: none;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .quantity-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            margin: 0 5px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .cafebar-item.selected .quantity-control {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cafebar-item .quantity-control {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s;
+        }
+
+        .cafebar-item.selected {
+            border-color: var(--secondary-color);
+            background-color: rgba(46, 204, 113, 0.1);
+            padding-bottom: 15px;
+        }
+
+        /* Nuevos estilos para la interfaz mejorada */
+        .cafebar-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .cafebar-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: white;
+        }
+
+        .cafebar-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .cafebar-item.selected {
+            border-color: var(--secondary-color);
+            background-color: rgba(46, 204, 113, 0.1);
+        }
+
+        .cafebar-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .cafebar-item .name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .cafebar-item .price {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .cart-summary {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-summary h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .cart-items {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .cart-item-name {
+            flex-grow: 1;
+        }
+
+        .cart-item-price {
+            font-weight: bold;
+            margin-left: 15px;
+        }
+
+        .cart-item-remove {
+            color: var(--danger-color);
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 2px solid #eee;
+        }
+
+        .sections-container {
+            position: relative;
+        }
+
+        .form-section {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .tab-navigation {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            background-color: var(--light-color);
+            border: none;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart-btn {
+            padding: 12px 15px;
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #27ae60;
+        }
+
+        .price-input {
+            text-align: right;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -256,6 +476,80 @@
                 <div class="operation-type-toggle">
                     <div class="operation-btn active" data-operation="Venta">Venta</div>
                     <div class="operation-btn" data-operation="Compra">Compra</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Categoría:</label>
+                <div class="tab-navigation" id="categoryTabs">
+                    <button type="button" class="tab-button active" data-category="Cafebar"
+                        data-section="cafebar-section">Cafebar</button>
+                    <button type="button" class="tab-button" data-category="Torneo"
+                        data-section="torneo-section">Torneo</button>
+                    <button type="button" class="tab-button" data-category="Producto"
+                        data-section="producto-section">Producto</button>
+                    <button type="button" class="tab-button" data-category="Singles TCG"
+                        data-section="singles-section">Singles TCG</button>
+                </div>
+
+                <div class="sections-container">
+                    <!-- Sección Cafebar -->
+                    <div id="cafebar-section" class="form-section active">
+                        <div class="cafebar-grid" id="cafebarGrid">
+                            <!-- Los items se cargarán dinámicamente con JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Sección Torneo -->
+                    <div id="torneo-section" class="form-section">
+                        <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <div style="flex: 2;">
+                                <input type="text" id="torneoDescription" placeholder="Descripción del torneo" required>
+                            </div>
+                            <div style="flex: 1;">
+                                <input type="text" id="torneoPrice" placeholder="Precio" required class="price-input">
+                            </div>
+                            <div style="flex: 0 0 auto;">
+                                <button type="button" class="standard-btn add-to-cart-btn"
+                                    data-section="torneo">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección Producto -->
+                    <div id="producto-section" class="form-section">
+                        <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <div style="flex: 2;">
+                                <input type="text" id="productoName" placeholder="Nombre del producto" required>
+                            </div>
+                            <div style="flex: 1;">
+                                <input type="text" id="productoPrice" placeholder="Precio" required class="price-input">
+                            </div>
+                            <div style="flex: 0 0 auto;">
+                                <button type="button" class="standard-btn add-to-cart-btn"
+                                    data-section="producto">Agregar</button>
+                            </div>
+                        </div>
+                        <textarea id="productoDescription" placeholder="Descripción detallada del producto (opcional)"
+                            style="margin-top: 10px;"></textarea>
+                    </div>
+
+                    <!-- Sección Singles TCG -->
+                    <div id="singles-section" class="form-section">
+                        <input type="text" id="singlesDescription" placeholder="Descripción de las cartas" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen del Carrito -->
+            <div class="cart-summary" id="cartSummary">
+                <h3>Detalle de Operación</h3>
+                <div class="cart-items" id="cartItems">
+                    <!-- Los items seleccionados se mostrarán aquí -->
+                </div>
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">ARS 0</span>
                 </div>
             </div>
 
@@ -283,23 +577,6 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label>Categoría:</label>
-                <div class="btn-group group-of-4">
-                    <button type="button" class="standard-btn category-btn" data-category="Torneo">Torneo</button>
-                    <button type="button" class="standard-btn category-btn active"
-                        data-category="Cafebar">Cafebar</button>
-                    <button type="button" class="standard-btn category-btn" data-category="Producto">Producto</button>
-                    <button type="button" class="standard-btn category-btn" data-category="Singles TCG">Singles
-                        TCG</button>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="description">Descripción:</label>
-                <input type="text" id="description" placeholder="Breve descripción de la operación" required>
-            </div>
-
             <button type="submit" class="btn-submit sale" id="submitButton">Registrar Venta</button>
         </form>
     </div>
@@ -314,9 +591,12 @@
             // Seleccionar elementos
             const form = document.getElementById('operationForm');
             const operationBtns = document.querySelectorAll('.operation-btn');
-            const categoryBtns = document.querySelectorAll('.category-btn');
+            const categoryTabs = document.querySelectorAll('.tab-button');
             const paymentBtns = document.querySelectorAll('.payment-btn');
             const currencyBtns = document.querySelectorAll('.currency-btn');
+            const cafebarGrid = document.getElementById('cafebarGrid');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
             const confirmation = document.getElementById('confirmation');
             const confirmationIcon = document.getElementById('confirmationIcon');
             const confirmationText = document.getElementById('confirmationText');
@@ -327,6 +607,349 @@
             let selectedCategory = 'Cafebar';
             let selectedPayment = 'Efectivo';
             let selectedCurrency = 'ARS';
+            let cart = []; // Array para almacenar los items seleccionados
+
+            // Productos de cafetería con imágenes reales
+            const cafebarProducts = [
+                {
+                    id: 'coca',
+                    name: 'Coca Cola',
+                    price: 2000,
+                    icon: 'fas fa-glass-water',
+                    image: 'https://images.unsplash.com/photo-1624552184280-9e9631bbeee9?auto=format&fit=crop&q=80&w=150&h=150'
+                },
+                {
+                    id: 'coca-zero',
+                    name: 'Coca Cola Zero',
+                    price: 2000,
+                    icon: 'fas fa-glass-water',
+                    image: 'https://images.unsplash.com/photo-1630404365865-97ff92feba6a?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'sprite',
+                    name: 'Sprite',
+                    price: 2000,
+                    icon: 'fas fa-glass-water',
+                    image: 'https://images.unsplash.com/photo-1690988109041-458628590a9e?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'levite',
+                    name: 'Levite',
+                    price: 2000,
+                    icon: 'fas fa-droplet',
+                    image: 'https://images.unsplash.com/photo-1722239311810-86fda1346414?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'agua',
+                    name: 'Agua',
+                    price: 1000,
+                    icon: 'fas fa-droplet',
+                    image: 'https://images.unsplash.com/photo-1652491285696-472cec79a77a?auto=format&fit=crop&q=80&w=150&h=150'
+                },
+                {
+                    id: 'agua-gas',
+                    name: 'Agua C/ Gas',
+                    price: 1000,
+                    icon: 'fas fa-droplet',
+                    image: 'https://plus.unsplash.com/premium_photo-1683288081743-5161d099f16e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'monster',
+                    name: 'Monster Comun',
+                    price: 3000,
+                    icon: 'fas fa-mug-hot',
+                    image: 'https://images.unsplash.com/photo-1622543925917-763c34d1a86e?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'monster-zero',
+                    name: 'Monster Zero',
+                    price: 3000,
+                    icon: 'fas fa-mug-hot',
+                    image: 'https://images.unsplash.com/photo-1495315405795-feeac94b5a0e?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'monster-mango',
+                    name: 'Monster Mango',
+                    price: 3000,
+                    icon: 'fas fa-mug-hot',
+                    image: 'https://images.unsplash.com/photo-1644330824480-f44ba5ebb43c?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'cafe',
+                    name: 'Café',
+                    price: 3000,
+                    icon: 'fas fa-mug-hot',
+                    image: 'https://images.unsplash.com/photo-1495774856032-8b90bbb32b32?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'delicias',
+                    name: 'Delicias Pasteleras',
+                    price: 2000,
+                    icon: 'fas fa-hotdog',
+                    image: 'https://images.unsplash.com/photo-1691052252990-4cd1fdda73dc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'croissant-jq',
+                    name: 'Croissant J&Q',
+                    price: 2000,
+                    icon: 'fas fa-hotdog',
+                    image: 'https://images.unsplash.com/photo-1623334044303-241021148842?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'torta',
+                    name: 'Torta',
+                    price: 3500,
+                    icon: 'fas fa-hotdog',
+                    image: 'https://plus.unsplash.com/premium_photo-1713447395823-2e0b40b75a89?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'alfajor',
+                    name: 'Alfajor Rasta',
+                    price: 1500,
+                    icon: 'fas fa-cookie',
+                    image: 'https://images.unsplash.com/photo-1613249000637-6329eef9287c?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'pancho',
+                    name: 'Pancho',
+                    price: 3000,
+                    icon: 'fas fa-hotdog',
+                    image: 'https://images.unsplash.com/photo-1599599810694-b5b37304c041?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'pizza',
+                    name: 'Pizza Muzza',
+                    price: 8500,
+                    icon: 'fas fa-pizza-slice',
+                    image: 'https://images.unsplash.com/photo-1595708684082-a173bb3a06c5?auto=format&fit=crop&q=80&w=150&h=150'
+                },
+                {
+                    id: 'pizza-god',
+                    name: 'Pizza God',
+                    price: 10000,
+                    icon: 'fas fa-pizza-slice',
+                    image: 'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'shawarma',
+                    name: 'Shawarma Classic',
+                    price: 10500,
+                    icon: 'fas fa-pizza-slice',
+                    image: 'https://images.unsplash.com/photo-1699728088614-7d1d4277414b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'shawarma-super',
+                    name: 'Shawarma Super',
+                    price: 11000,
+                    icon: 'fas fa-pizza-slice',
+                    image: 'https://images.unsplash.com/photo-1662116765994-1e4200c43589?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'shawarma-al-nabek',
+                    name: 'Shawarma Al Nabek',
+                    price: 14000,
+                    icon: 'fas fa-pizza-slice',
+                    image: 'https://images.unsplash.com/photo-1699728088600-6d684acbeada?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'falafel',
+                    name: 'Falafel',
+                    price: 9200,
+                    icon: 'fas fa-pizza-slice',
+                    image: 'https://images.unsplash.com/photo-1593001872095-7d5b3868fb1d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+
+            ];
+
+            // Función para cargar los productos de cafetería
+            function loadCafebarProducts() {
+                cafebarGrid.innerHTML = '';
+
+                cafebarProducts.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.className = 'cafebar-item';
+                    productElement.dataset.id = product.id;
+                    productElement.dataset.price = product.price;
+                    productElement.dataset.name = product.name;
+
+                    // Usar imágenes en lugar de íconos
+                    productElement.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" onerror="this.onerror=null; this.innerHTML='<i class="${product.icon}" style="font-size: 40px; color: var(--primary-color);"></i>
+            <div class="name">${product.name}</div>
+            <div class="price">ARS ${product.price}</div>
+            <div class="quantity-control">
+                <button type="button" class="quantity-btn minus">-</button>
+                <input type="number" class="quantity-input" value="1" min="1" max="99">
+                <button type="button" class="quantity-btn plus">+</button>
+            </div>
+        `;
+
+                    // Agregar event listener para selección de producto
+                    productElement.addEventListener('click', function (e) {
+                        // Evitar que se active la selección si se hace clic en los controles de cantidad
+                        if (e.target.classList.contains('quantity-btn') ||
+                            e.target.classList.contains('quantity-input')) {
+                            return;
+                        }
+
+                        // Toggle selección
+                        this.classList.toggle('selected');
+
+                        // Obtener la cantidad actual
+                        const quantityInput = this.querySelector('.quantity-input');
+                        const quantity = parseInt(quantityInput.value) || 1;
+
+                        // Actualizar carrito
+                        if (this.classList.contains('selected')) {
+                            // Agregar al carrito
+                            cart.push({
+                                id: product.id,
+                                name: product.name,
+                                price: product.price,
+                                category: 'Cafebar',
+                                quantity: quantity,
+                                totalPrice: product.price * quantity
+                            });
+                        } else {
+                            // Remover del carrito
+                            cart = cart.filter(item => !(item.id === product.id && item.category === 'Cafebar'));
+                        }
+
+                        updateCart();
+                    });
+
+                    // Agregar event listeners para los botones de incremento y decremento
+                    const plusBtn = productElement.querySelector('.plus');
+                    const minusBtn = productElement.querySelector('.minus');
+                    const quantityInput = productElement.querySelector('.quantity-input');
+
+                    plusBtn.addEventListener('click', function () {
+                        let currentValue = parseInt(quantityInput.value) || 1;
+                        currentValue = Math.min(currentValue + 1, 99); // Máximo 99
+                        quantityInput.value = currentValue;
+
+                        // Actualizar cantidad en el carrito si el producto está seleccionado
+                        if (productElement.classList.contains('selected')) {
+                            const cartItem = cart.find(item => item.id === product.id && item.category === 'Cafebar');
+                            if (cartItem) {
+                                cartItem.quantity = currentValue;
+                                cartItem.totalPrice = product.price * currentValue;
+                                updateCart();
+                            }
+                        }
+                    });
+
+                    minusBtn.addEventListener('click', function () {
+                        let currentValue = parseInt(quantityInput.value) || 1;
+                        currentValue = Math.max(currentValue - 1, 1); // Mínimo 1
+                        quantityInput.value = currentValue;
+
+                        // Actualizar cantidad en el carrito si el producto está seleccionado
+                        if (productElement.classList.contains('selected')) {
+                            const cartItem = cart.find(item => item.id === product.id && item.category === 'Cafebar');
+                            if (cartItem) {
+                                cartItem.quantity = currentValue;
+                                cartItem.totalPrice = product.price * currentValue;
+                                updateCart();
+                            }
+                        }
+                    });
+
+                    quantityInput.addEventListener('change', function () {
+                        let currentValue = parseInt(this.value) || 1;
+                        currentValue = Math.max(1, Math.min(99, currentValue)); // Entre 1 y 99
+                        this.value = currentValue;
+
+                        // Actualizar cantidad en el carrito si el producto está seleccionado
+                        if (productElement.classList.contains('selected')) {
+                            const cartItem = cart.find(item => item.id === product.id && item.category === 'Cafebar');
+                            if (cartItem) {
+                                cartItem.quantity = currentValue;
+                                cartItem.totalPrice = product.price * currentValue;
+                                updateCart();
+                            }
+                        }
+                    });
+
+                    cafebarGrid.appendChild(productElement);
+                });
+            }
+
+            // Función para actualizar el carrito
+            function updateCart() {
+                cartItems.innerHTML = '';
+                let total = 0;
+
+                if (cart.length === 0) {
+                    cartItems.innerHTML = '<div style="padding: 10px; color: #999;">No hay items seleccionados</div>';
+                } else {
+                    cart.forEach((item, index) => {
+                        const itemElement = document.createElement('div');
+                        itemElement.className = 'cart-item';
+
+                        // Mostrar la cantidad y el precio total
+                        const quantity = item.quantity || 1;
+                        const totalPrice = item.totalPrice || item.price;
+
+                        // Determinar texto según categoría
+                        let itemText = item.name;
+                        if (item.category === 'Cafebar') {
+                            itemText = quantity > 1 ? `${quantity}x ${item.name}` : item.name;
+                        } else if (item.category === 'Producto' && item.description) {
+                            itemText = `${item.name} (${item.description})`;
+                        } else if (item.category === 'Torneo') {
+                            itemText = `Torneo: ${item.name}`;
+                        } else if (item.category === 'Singles TCG') {
+                            itemText = `Singles: ${item.name}`;
+                        }
+
+                        itemElement.innerHTML = `
+                <span class="cart-item-name">${itemText}</span>
+                <span class="cart-item-price">ARS ${totalPrice}</span>
+                <span class="cart-item-remove" data-index="${index}">
+                    <i class="fas fa-times"></i>
+                </span>
+            `;
+
+                        // Agregar el elemento al carrito
+                        cartItems.appendChild(itemElement);
+
+                        // Sumar al total
+                        total += totalPrice;
+                    });
+
+                    // Agregar event listeners para los botones de eliminar
+                    const removeButtons = document.querySelectorAll('.cart-item-remove');
+                    removeButtons.forEach(button => {
+                        button.addEventListener('click', function () {
+                            const index = parseInt(this.dataset.index);
+                            const removedItem = cart[index];
+
+                            // Eliminar del carrito
+                            cart.splice(index, 1);
+
+                            // Si es un item de cafebar, desmarcar el elemento visual
+                            if (removedItem.category === 'Cafebar') {
+                                const productElement = document.querySelector(`.cafebar-item[data-id="${removedItem.id}"]`);
+                                if (productElement) {
+                                    productElement.classList.remove('selected');
+                                }
+                            }
+
+                            // Actualizar el carrito
+                            updateCart();
+                        });
+                    });
+                }
+
+                // Actualizar el total
+                cartTotal.textContent = `ARS ${total}`;
+
+                // Actualizar el campo de monto
+                document.getElementById('amount').value = total;
+                const formattedAmountDisplay = document.getElementById('formattedAmount');
+                formattedAmountDisplay.textContent = `${selectedCurrency} ${formatNumber(total)}`;
+            }
 
             // Función para actualizar la interfaz basada en las selecciones
             function updateInterface() {
@@ -364,6 +987,9 @@
                 }
             }
 
+            // Cargar productos de cafetería
+            loadCafebarProducts();
+
             // Event listeners para botones de tipo de operación
             operationBtns.forEach(btn => {
                 btn.addEventListener('click', function () {
@@ -374,12 +1000,104 @@
                 });
             });
 
-            // Event listeners para botones de categoría
-            categoryBtns.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    categoryBtns.forEach(b => b.classList.remove('active'));
+            // Event listeners para pestañas de categoría
+            categoryTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Actualizar pestaña activa
+                    categoryTabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
+
+                    // Actualizar categoría seleccionada
                     selectedCategory = this.dataset.category;
+
+                    // Mostrar sección correspondiente
+                    document.querySelectorAll('.form-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+
+                    document.getElementById(this.dataset.section).classList.add('active');
+                });
+            });
+
+            // Event listeners para los botones de agregar al carrito en Torneo y Producto
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const section = this.dataset.section;
+
+                    if (section === 'torneo') {
+                        // Validar campos
+                        const descripcion = document.getElementById('torneoDescription').value;
+                        const precioInput = document.getElementById('torneoPrice').value;
+                        const precio = parseFloat(unformatNumber(precioInput));
+
+                        if (!descripcion || isNaN(precio) || precio <= 0) {
+                            alert('Por favor, complete todos los campos correctamente.');
+                            return;
+                        }
+
+                        // Agregar torneo al carrito
+                        cart.push({
+                            id: 'torneo-' + Date.now(), // ID único
+                            name: descripcion,
+                            price: precio,
+                            category: 'Torneo',
+                            quantity: 1,
+                            totalPrice: precio
+                        });
+
+                        // Limpiar campos
+                        document.getElementById('torneoDescription').value = '';
+                        document.getElementById('torneoPrice').value = '';
+
+                    } else if (section === 'producto') {
+                        // Validar campos
+                        const nombre = document.getElementById('productoName').value;
+                        const precioInput = document.getElementById('productoPrice').value;
+                        const precio = parseFloat(unformatNumber(precioInput));
+                        const descripcion = document.getElementById('productoDescription').value;
+
+                        if (!nombre || isNaN(precio) || precio <= 0) {
+                            alert('Por favor, complete al menos el nombre y precio del producto.');
+                            return;
+                        }
+
+                        // Agregar producto al carrito
+                        cart.push({
+                            id: 'producto-' + Date.now(), // ID único
+                            name: nombre,
+                            description: descripcion,
+                            price: precio,
+                            category: 'Producto',
+                            quantity: 1,
+                            totalPrice: precio
+                        });
+
+                        // Limpiar campos
+                        document.getElementById('productoName').value = '';
+                        document.getElementById('productoPrice').value = '';
+                        document.getElementById('productoDescription').value = '';
+                    }
+
+                    // Actualizar carrito
+                    updateCart();
+                });
+            });
+
+            // Event listeners para formatear campos de precio
+            const priceInputs = document.querySelectorAll('.price-input');
+            priceInputs.forEach(input => {
+                input.addEventListener('input', function () {
+                    // Obtener el valor actual
+                    const value = this.value;
+
+                    // Eliminar caracteres no numéricos (excepto punto decimal)
+                    const cleanValue = value.replace(/[^\d.]/g, '');
+
+                    // Formatear el número
+                    if (cleanValue) {
+                        this.value = formatNumber(cleanValue);
+                    }
                 });
             });
 
@@ -441,9 +1159,8 @@
             const formattedAmountDisplay = document.getElementById('formattedAmount');
 
             amountInput.addEventListener('input', function (e) {
-                // Obtener el valor actual y la posición del cursor
+                // Obtener el valor actual
                 const value = this.value;
-                const cursorPosition = this.selectionStart;
 
                 // Eliminar caracteres no numéricos (excepto punto decimal)
                 const cleanValue = value.replace(/[^\d.]/g, '');
@@ -468,17 +1185,121 @@
                 });
             });
 
+            // Función para obtener la descripción basada en la categoría y contenido del carrito
+            function getDescription() {
+                if (cart.length === 0) return "";
+
+                // Agrupar items por categoría
+                const cafebarItems = cart.filter(item => item.category === 'Cafebar');
+                const torneoItems = cart.filter(item => item.category === 'Torneo');
+                const productoItems = cart.filter(item => item.category === 'Producto');
+                const singlesItems = cart.filter(item => item.category === 'Singles TCG');
+
+                // Generar descripciones por categoría
+                let descriptions = [];
+
+                if (cafebarItems.length > 0) {
+                    const cafebarDesc = cafebarItems.map(item => {
+                        const quantity = item.quantity || 1;
+                        return quantity > 1 ? `${quantity}x ${item.name}` : item.name;
+                    }).join(' + ');
+                    descriptions.push(cafebarDesc);
+                }
+
+                if (torneoItems.length > 0) {
+                    torneoItems.forEach(item => {
+                        descriptions.push(`Torneo: ${item.name}`);
+                    });
+                }
+
+                if (productoItems.length > 0) {
+                    productoItems.forEach(item => {
+                        descriptions.push(`${item.name}${item.description ? ` (${item.description})` : ''}`);
+                    });
+                }
+
+                if (singlesItems.length > 0) {
+                    singlesItems.forEach(item => {
+                        descriptions.push(`Singles: ${item.name}`);
+                    });
+                }
+
+                return descriptions.join(' | ');
+            }
+
+            // Función para obtener la fecha con formato DD/MM/YYYY
+            function getFormattedDate() {
+                const now = new Date();
+                const day = String(now.getDate()).padStart(2, '0');
+                const month = String(now.getMonth() + 1).padStart(2, '0'); // Los meses en JS van de 0-11
+                const year = now.getFullYear();
+
+                return `${day}/${month}/${year}`;
+            }
+
+            // Función para obtener la categoría en el formato requerido
+            function getFormattedCategory() {
+                return `${selectedOperation.toUpperCase()} ${selectedCategory.toUpperCase()}`;
+            }
+
+            // Función para obtener el método de pago en el formato requerido
+            function getFormattedPaymentMethod() {
+                if (selectedPayment === 'Tarjeta') {
+                    return 'PAYWAY (ARS)';
+                } else if (selectedPayment === 'Efectivo') {
+                    return `EFVO CITADEL (${selectedCurrency})`;
+                } else if (selectedPayment === 'Transferencia') {
+                    return `CITADEL (${selectedCurrency})`;
+                } else if (selectedPayment === 'Crypto') {
+                    return 'BINANCE MAXI (USDT)';
+                }
+                return selectedPayment;
+            }
+
+            // Función para obtener la moneda en el formato requerido
+            function getFormattedCurrency() {
+                if (selectedCurrency === 'ARS') {
+                    return 'PESOS';
+                } else {
+                    return selectedCurrency;
+                }
+            }
+
             // Event listener para envío de formulario
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
 
                 // Obtener valores del formulario
                 let amount = unformatNumber(document.getElementById('amount').value);
-                const description = document.getElementById('description').value;
+                const description = getDescription();
 
-                // Validar que se hayan seleccionado todos los campos
-                if (!amount || !description) {
-                    alert('Por favor, complete todos los campos');
+                // Validar que se hayan completado todos los campos necesarios
+                let isValid = true;
+                let errorMessage = "";
+
+                if (!amount) {
+                    errorMessage = "Por favor, ingrese un monto.";
+                    isValid = false;
+                } else if (amount <= 0) {
+                    errorMessage = "El monto debe ser mayor a cero.";
+                    isValid = false;
+                }
+
+                if (!description) {
+                    if (selectedCategory === 'Cafebar') {
+                        errorMessage = "Por favor, seleccione al menos un producto.";
+                    } else if (selectedCategory === 'Torneo') {
+                        errorMessage = "Por favor, ingrese la descripción del torneo.";
+                    } else if (selectedCategory === 'Producto') {
+                        errorMessage = "Por favor, ingrese el nombre del producto.";
+                    } else if (selectedCategory === 'Singles TCG') {
+                        errorMessage = "Por favor, ingrese la descripción de las cartas.";
+                    }
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    alert(errorMessage);
                     return;
                 }
 
@@ -487,45 +1308,7 @@
                     amount = -Math.abs(amount);
                 }
 
-                // Función para obtener la categoría en el formato requerido
-                function getFormattedCategory() {
-                    return `${selectedOperation.toUpperCase()} ${selectedCategory.toUpperCase()}`;
-                }
-
-                // Función para obtener el método de pago en el formato requerido
-                function getFormattedPaymentMethod() {
-                    if (selectedPayment === 'Tarjeta') {
-                        return 'PAYWAY (ARS)';
-                    } else if (selectedPayment === 'Efectivo') {
-                        return `EFVO CITADEL (${selectedCurrency})`;
-                    } else if (selectedPayment === 'Transferencia') {
-                        return `CITADEL (${selectedCurrency})`;
-                    } else if (selectedPayment === 'Crypto') {
-                        return 'BINANCE MAXI (USDT)';
-                    }
-                    return selectedPayment;
-                }
-
-                // Función para obtener la moneda en el formato requerido
-                function getFormattedCurrency() {
-                    if (selectedCurrency === 'ARS') {
-                        return 'PESOS';
-                    } else {
-                        return selectedCurrency;
-                    }
-                }
-
-                // Función para obtener la fecha con formato DD/MM/YYYY
-                function getFormattedDate() {
-                    const now = new Date();
-                    const day = String(now.getDate()).padStart(2, '0');
-                    const month = String(now.getMonth() + 1).padStart(2, '0'); // Los meses en JS van de 0-11
-                    const year = now.getFullYear();
-                    
-                    return `${day}/${month}/${year}`;
-                }
-
-                // Aquí conectaríamos con Make para enviar los datos
+                // Preparar los datos para enviar a Make
                 const data = {
                     category: getFormattedCategory(),
                     amount: amount,
@@ -564,15 +1347,33 @@
 
                             // Restablecer formulario
                             form.reset();
+
+                            // Vaciar el carrito
+                            cart = [];
+
+                            // Desmarcar productos de cafetería seleccionados
+                            document.querySelectorAll('.cafebar-item.selected').forEach(item => {
+                                item.classList.remove('selected');
+                            });
+
+                            // Actualizar carrito
+                            updateCart();
+
                             // Mantener venta como opción predeterminada
                             operationBtns.forEach(b => b.classList.remove('active'));
                             document.querySelector('.operation-btn[data-operation="Venta"]').classList.add('active');
                             selectedOperation = 'Venta';
 
                             // Restablecer categoría a Cafebar
-                            categoryBtns.forEach(b => b.classList.remove('active'));
-                            document.querySelector('.category-btn[data-category="Cafebar"]').classList.add('active');
+                            categoryTabs.forEach(t => t.classList.remove('active'));
+                            document.querySelector('.tab-button[data-category="Cafebar"]').classList.add('active');
                             selectedCategory = 'Cafebar';
+
+                            // Mostrar sección correspondiente
+                            document.querySelectorAll('.form-section').forEach(section => {
+                                section.classList.remove('active');
+                            });
+                            document.getElementById('cafebar-section').classList.add('active');
 
                             // Restablecer método de pago a Efectivo
                             paymentBtns.forEach(b => b.classList.remove('active'));
@@ -590,15 +1391,18 @@
                             // Actualizar interfaz
                             updateInterface();
                         }, 2000);
-                    }, 1000);
-            })
-                .catch(error => {
-                    console.error('Error al enviar datos:', error);
-                    alert('Error al registrar la operación. Por favor, intente nuevamente.');
-                });
+                    })
+                    .catch(error => {
+                        console.error('Error al enviar datos:', error);
+                        alert('Error al registrar la operación. Por favor, intente nuevamente.');
+                    });
+            });
 
             // Inicializar la interfaz
             updateInterface();
+
+            // Actualizar carrito inicialmente
+            updateCart();
         });
     </script>
 </body>
