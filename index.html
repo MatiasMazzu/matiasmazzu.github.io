@@ -493,10 +493,16 @@
                 };
                 
                 console.log('Datos a enviar:', data);
-                
-                // En un entorno real, aquí haríamos la llamada a la API de Make
-                // Simular envío exitoso
-                setTimeout(function() {
+
+                // Realizar la llamada real al webhook de Make
+                fetch('https://hook.us2.make.com/3ydlpvyohcd9ji77fzq373d5f2p7aobl', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
                     // Actualizar el icono y texto de confirmación
                     if (selectedOperation === 'Venta') {
                         confirmationIcon.className = 'fas fa-check-circle sale';
@@ -535,11 +541,18 @@
                         document.querySelector('.currency-btn[data-currency="ARS"]').classList.add('active');
                         selectedCurrency = 'ARS';
                         
+                        // Limpiar el campo formateado
+                        formattedAmountDisplay.textContent = '';
+                        
                         // Actualizar interfaz
                         updateInterface();
                     }, 2000);
                 }, 1000);
-            });
+                })
+                .catch(error => {
+                    console.error('Error al enviar datos:', error);
+                    alert('Error al registrar la operación. Por favor, intente nuevamente.');
+                });
             
             // Inicializar la interfaz
             updateInterface();
