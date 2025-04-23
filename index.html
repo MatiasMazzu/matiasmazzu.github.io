@@ -485,7 +485,7 @@
                     <button type="button" class="tab-button active" data-category="Cafebar" data-section="cafebar-section">Cafebar</button>
                     <button type="button" class="tab-button" data-category="Torneo" data-section="torneo-section">Torneo</button>
                     <button type="button" class="tab-button" data-category="Producto" data-section="producto-section">Producto</button>
-                    <button type="button" class="tab-button" data-category="Singles TCG" data-section="singles-section">Singles TCG</button>
+                    <button type="button" class="tab-button" data-category="Singles" data-section="singles-section">Singles</button>
                 </div>
     
                 <div class="sections-container">
@@ -527,7 +527,7 @@
                         <textarea id="productoDescription" name="productoDescription" placeholder="Descripción detallada del producto (opcional)" style="margin-top: 10px;"></textarea>
                     </div>
                 
-                    <!-- Sección Singles TCG -->
+                    <!-- Sección Singles -->
                     <div id="singles-section" class="form-section">
                         <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
                             <div style="flex: 2;">
@@ -907,7 +907,7 @@
                             itemText = `${item.name} (${item.description})`;
                         } else if (item.category === 'Torneo') {
                             itemText = `Torneo: ${item.name}`;
-                        } else if (item.category === 'Singles TCG') {
+                        } else if (item.category === 'Singles') {
                             itemText = `Singles: ${item.name}`;
                         }
 
@@ -1121,7 +1121,7 @@
                             id: 'singles-' + Date.now(), // ID único
                             name: descripcion,
                             price: precio,
-                            category: 'Singles TCG',
+                            category: 'Singles',
                             quantity: 1,
                             totalPrice: precio
                         });
@@ -1274,7 +1274,7 @@
                 const cafebarItems = cart.filter(item => item.category === 'Cafebar');
                 const torneoItems = cart.filter(item => item.category === 'Torneo');
                 const productoItems = cart.filter(item => item.category === 'Producto');
-                const singlesItems = cart.filter(item => item.category === 'Singles TCG');
+                const singlesItems = cart.filter(item => item.category === 'Singles');
 
                 // Generar descripciones por categoría
                 let descriptions = [];
@@ -1373,7 +1373,7 @@
                         errorMessage = "Por favor, ingrese la descripción del torneo.";
                     } else if (selectedCategory === 'Producto') {
                         errorMessage = "Por favor, ingrese el nombre del producto.";
-                    } else if (selectedCategory === 'Singles TCG') {
+                    } else if (selectedCategory === 'Singles') {
                         errorMessage = "Por favor, ingrese la descripción de las cartas.";
                     }
                     isValid = false;
