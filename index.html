@@ -998,6 +998,21 @@
             // Cargar productos de cafetería
             loadCafebarProducts();
 
+            // Desactivar la validación de campos required en pestañas inactivas al cargar
+            function updateRequiredAttributes() {
+                // Quitar required de todos los campos en secciones inactivas
+                document.querySelectorAll('.form-section:not(.active) input[required], .form-section:not(.active) textarea[required]').forEach(field => {
+                    field.setAttribute('data-required', 'true');
+                    field.removeAttribute('required');
+                });
+                
+                // Restaurar required en la sección activa
+                document.querySelectorAll('.form-section.active [data-required]').forEach(field => {
+                    field.setAttribute('required', 'true');
+                    field.removeAttribute('data-required');
+                });
+            }
+
             // Event listeners para botones de tipo de operación
             operationBtns.forEach(btn => {
                 btn.addEventListener('click', function () {
@@ -1024,6 +1039,9 @@
                     });
 
                     document.getElementById(this.dataset.section).classList.add('active');
+
+                    // Actualizar atributos required después de cambiar las secciones
+                    setTimeout(updateRequiredAttributes, 0);
                 });
             });
 
