@@ -469,7 +469,7 @@
         <header>
             <h1>Registro de Operaciones</h1>
         </header>
-
+    
         <form id="operationForm">
             <div class="form-group">
                 <label>Tipo de Operación:</label>
@@ -478,20 +478,16 @@
                     <div class="operation-btn" data-operation="Compra">Compra</div>
                 </div>
             </div>
-
+    
             <div class="form-group">
                 <label>Categoría:</label>
                 <div class="tab-navigation" id="categoryTabs">
-                    <button type="button" class="tab-button active" data-category="Cafebar"
-                        data-section="cafebar-section">Cafebar</button>
-                    <button type="button" class="tab-button" data-category="Torneo"
-                        data-section="torneo-section">Torneo</button>
-                    <button type="button" class="tab-button" data-category="Producto"
-                        data-section="producto-section">Producto</button>
-                    <button type="button" class="tab-button" data-category="Singles TCG"
-                        data-section="singles-section">Singles TCG</button>
+                    <button type="button" class="tab-button active" data-category="Cafebar" data-section="cafebar-section">Cafebar</button>
+                    <button type="button" class="tab-button" data-category="Torneo" data-section="torneo-section">Torneo</button>
+                    <button type="button" class="tab-button" data-category="Producto" data-section="producto-section">Producto</button>
+                    <button type="button" class="tab-button" data-category="Singles TCG" data-section="singles-section">Singles TCG</button>
                 </div>
-
+    
                 <div class="sections-container">
                     <!-- Sección Cafebar -->
                     <div id="cafebar-section" class="form-section active">
@@ -499,7 +495,7 @@
                             <!-- Los items se cargarán dinámicamente con JavaScript -->
                         </div>
                     </div>
-
+    
                     <!-- Sección Torneo -->
                     <div id="torneo-section" class="form-section">
                         <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
@@ -510,12 +506,11 @@
                                 <input type="text" id="torneoPrice" placeholder="Precio" required class="price-input">
                             </div>
                             <div style="flex: 0 0 auto;">
-                                <button type="button" class="standard-btn add-to-cart-btn"
-                                    data-section="torneo">Agregar</button>
+                                <button type="button" class="standard-btn add-to-cart-btn" data-section="torneo">Agregar</button>
                             </div>
                         </div>
                     </div>
-
+    
                     <!-- Sección Producto -->
                     <div id="producto-section" class="form-section">
                         <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
@@ -526,74 +521,74 @@
                                 <input type="text" id="productoPrice" placeholder="Precio" required class="price-input">
                             </div>
                             <div style="flex: 0 0 auto;">
-                                <button type="button" class="standard-btn add-to-cart-btn"
-                                    data-section="producto">Agregar</button>
+                                <button type="button" class="standard-btn add-to-cart-btn" data-section="producto">Agregar</button>
                             </div>
                         </div>
-                        <textarea id="productoDescription" placeholder="Descripción detallada del producto (opcional)"
-                            style="margin-top: 10px;"></textarea>
+                        <textarea id="productoDescription" placeholder="Descripción detallada del producto (opcional)" style="margin-top: 10px;"></textarea>
                     </div>
-
+    
                     <!-- Sección Singles TCG -->
                     <div id="singles-section" class="form-section">
                         <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
                             <div style="flex: 2;">
-                                <input type="text" id="singlesDescription" placeholder="Descripción de las cartas"
-                                    required>
+                                <input type="text" id="singlesDescription" placeholder="Descripción de las cartas" required>
                             </div>
                             <div style="flex: 1;">
                                 <input type="text" id="singlesPrice" placeholder="Precio" required class="price-input">
                             </div>
                             <div style="flex: 0 0 auto;">
-                                <button type="button" class="standard-btn add-to-cart-btn"
-                                    data-section="singles">Agregar</button>
+                                <button type="button" class="standard-btn add-to-cart-btn" data-section="singles">Agregar</button>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Resumen del Carrito -->
-                    <div class="cart-summary" id="cartSummary">
-                        <h3>Detalle de Operación</h3>
-                        <div class="cart-items" id="cartItems">
-                            <!-- Los items seleccionados se mostrarán aquí -->
-                        </div>
-                        <div class="cart-total">
-                            <span>Total:</span>
-                            <span id="cartTotal">ARS 0</span>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="amount">Monto:</label>
-                        <input type="text" id="amount" placeholder="Ingrese el monto" required>
-                        <div id="formattedAmount" style="margin-top: 5px; color: #666; font-size: 14px;"></div>
-
-                        <div class="currency-toggle" style="margin-top: 10px;">
-                            <div class="currency-btn active" data-currency="ARS">ARS</div>
-                            <div class="currency-btn" data-currency="USD">USD</div>
-                            <div class="currency-btn" data-currency="USDT">USDT</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Método de Pago:</label>
-                        <div class="btn-group">
-                            <button type="button" class="standard-btn payment-btn active"
-                                data-payment="Efectivo">Efectivo</button>
-                            <button type="button" class="standard-btn payment-btn"
-                                data-payment="Tarjeta">Tarjeta</button>
-                            <button type="button" class="standard-btn payment-btn"
-                                data-payment="Transferencia">Transferencia</button>
-                            <button type="button" class="standard-btn payment-btn" data-payment="Crypto">Crypto</button>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn-submit sale" id="submitButton">Registrar Venta</button>
                 </div>
-            </form>
-        </div>
+    
+                <!-- Resumen del Carrito -->
+                <div class="cart-summary" id="cartSummary">
+                    <h3>Detalle de Operación</h3>
+                    <div class="cart-items" id="cartItems">
+                        <!-- Los items seleccionados se mostrarán aquí -->
+                    </div>
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="cartTotal">ARS 0</span>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label for="amount">Monto:</label>
+                    <input type="text" id="amount" placeholder="Ingrese el monto" required>
+                    <div id="formattedAmount" style="margin-top: 5px; color: #666; font-size: 14px;"></div>
+    
+                    <div class="currency-toggle" style="margin-top: 10px;">
+                        <div class="currency-btn active" data-currency="ARS">ARS</div>
+                        <div class="currency-btn" data-currency="USD">USD</div>
+                        <div class="currency-btn" data-currency="USDT">USDT</div>
+                    </div>
+                </div>
+    
+                <div class="form-group">
+                    <label>Método de Pago:</label>
+                    <div class="btn-group">
+                        <button type="button" class="standard-btn payment-btn active" data-payment="Efectivo">Efectivo</button>
+                        <button type="button" class="standard-btn payment-btn" data-payment="Tarjeta">Tarjeta</button>
+                        <button type="button" class="standard-btn payment-btn" data-payment="Transferencia">Transferencia</button>
+                        <button type="button" class="standard-btn payment-btn" data-payment="Crypto">Crypto</button>
+                    </div>
+                </div>
+    
+                <!-- Campo para WhatsApp cuando se selecciona Transferencia -->
+                <div class="form-group" id="whatsappField" style="display: none;">
+                    <label for="whatsappNumber">Número de WhatsApp (para enviar comprobante):</label>
+                    <input type="tel" id="whatsappNumber" placeholder="Ej: +541155667788" pattern="[+][0-9]{10,15}">
+                    <small>Formato: +código de país seguido del número</small>
+                </div>
+    
+                <button type="submit" class="btn-submit sale" id="submitButton">Registrar Venta</button>
+            </div>
+        </form>
     </div>
-
+    
     <div class="confirmation" id="confirmation">
         <i class="fas fa-check-circle sale" id="confirmationIcon"></i>
         <h2 id="confirmationText">¡Venta Registrada!</h2>
@@ -1146,6 +1141,34 @@
                     paymentBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     selectedPayment = this.dataset.payment;
+
+                    // Si se selecciona Crypto, forzar USDT como moneda
+                    if (selectedPayment === 'Crypto') {
+                        currencyBtns.forEach(b => b.classList.remove('active'));
+                        document.querySelector('.currency-btn[data-currency="USDT"]').classList.add('active');
+                        selectedCurrency = 'USDT';
+                    }
+
+                    updateInterface();
+                });
+            });
+
+            // Event listeners para mensaje de whatsapp
+            paymentBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.classList.contains('disabled')) return;
+
+                    paymentBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    selectedPayment = this.dataset.payment;
+
+                    // Mostrar u ocultar campo de WhatsApp según método de pago
+                    const whatsappField = document.getElementById('whatsappField');
+                    if (selectedPayment === 'Transferencia') {
+                        whatsappField.style.display = 'block';
+                    } else {
+                        whatsappField.style.display = 'none';
+                    }
 
                     // Si se selecciona Crypto, forzar USDT como moneda
                     if (selectedPayment === 'Crypto') {
