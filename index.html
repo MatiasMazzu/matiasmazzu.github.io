@@ -111,7 +111,7 @@
             color: white;
         }
 
-        .operation-btn.active[data-operation="Compra"] {
+        .operation-btn.active[data-operation="Pago"] {
             background-color: var(--purchase-color);
             color: white;
         }
@@ -475,7 +475,7 @@
                 <label>Tipo de Operación:</label>
                 <div class="operation-type-toggle">
                     <div class="operation-btn active" data-operation="Venta">Venta</div>
-                    <div class="operation-btn" data-operation="Compra">Compra</div>
+                    <div class="operation-btn" data-operation="Pago">Pago</div>
                 </div>
             </div>
     
@@ -1426,8 +1426,8 @@
                     return;
                 }
 
-                // Si es una compra, hacer el monto negativo
-                if (selectedOperation === 'Compra') {
+                // Si es un pago, hacer el monto negativo
+                if (selectedOperation === 'Pago') {
                     amount = -Math.abs(amount);
                 }
 
@@ -1458,7 +1458,7 @@
                             confirmationText.textContent = '¡Venta Registrada!';
                         } else {
                             confirmationIcon.className = 'fas fa-check-circle purchase';
-                            confirmationText.textContent = '¡Compra Registrada!';
+                            confirmationText.textContent = '¡Pago Registrado!';
                         }
 
                         // Mostrar confirmación
