@@ -495,46 +495,46 @@
                             <!-- Los items se cargarán dinámicamente con JavaScript -->
                         </div>
                     </div>
-    
+                
                     <!-- Sección Torneo -->
                     <div id="torneo-section" class="form-section">
                         <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
                             <div style="flex: 2;">
-                                <input type="text" id="torneoDescription" placeholder="Descripción del torneo" required>
+                                <input type="text" id="torneoDescription" name="torneoDescription" placeholder="Descripción del torneo" required>
                             </div>
                             <div style="flex: 1;">
-                                <input type="text" id="torneoPrice" placeholder="Precio" required class="price-input">
+                                <input type="text" id="torneoPrice" name="torneoPrice" placeholder="Precio" required class="price-input">
                             </div>
                             <div style="flex: 0 0 auto;">
                                 <button type="button" class="standard-btn add-to-cart-btn" data-section="torneo">Agregar</button>
                             </div>
                         </div>
                     </div>
-    
+                
                     <!-- Sección Producto -->
                     <div id="producto-section" class="form-section">
                         <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
                             <div style="flex: 2;">
-                                <input type="text" id="productoName" placeholder="Nombre del producto" required>
+                                <input type="text" id="productoName" name="productoName" placeholder="Nombre del producto" required>
                             </div>
                             <div style="flex: 1;">
-                                <input type="text" id="productoPrice" placeholder="Precio" required class="price-input">
+                                <input type="text" id="productoPrice" name="productoPrice" placeholder="Precio" required class="price-input">
                             </div>
                             <div style="flex: 0 0 auto;">
                                 <button type="button" class="standard-btn add-to-cart-btn" data-section="producto">Agregar</button>
                             </div>
                         </div>
-                        <textarea id="productoDescription" placeholder="Descripción detallada del producto (opcional)" style="margin-top: 10px;"></textarea>
+                        <textarea id="productoDescription" name="productoDescription" placeholder="Descripción detallada del producto (opcional)" style="margin-top: 10px;"></textarea>
                     </div>
-    
+                
                     <!-- Sección Singles TCG -->
                     <div id="singles-section" class="form-section">
                         <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
                             <div style="flex: 2;">
-                                <input type="text" id="singlesDescription" placeholder="Descripción de las cartas" required>
+                                <input type="text" id="singlesDescription" name="singlesDescription" placeholder="Descripción de las cartas" required>
                             </div>
                             <div style="flex: 1;">
-                                <input type="text" id="singlesPrice" placeholder="Precio" required class="price-input">
+                                <input type="text" id="singlesPrice" name="singlesPrice" placeholder="Precio" required class="price-input">
                             </div>
                             <div style="flex: 0 0 auto;">
                                 <button type="button" class="standard-btn add-to-cart-btn" data-section="singles">Agregar</button>
@@ -557,7 +557,7 @@
     
                 <div class="form-group">
                     <label for="amount">Monto:</label>
-                    <input type="text" id="amount" placeholder="Ingrese el monto" required>
+                    <input type="text" id="amount" name="amount" placeholder="Ingrese el monto" required>
                     <div id="formattedAmount" style="margin-top: 5px; color: #666; font-size: 14px;"></div>
     
                     <div class="currency-toggle" style="margin-top: 10px;">
@@ -1176,6 +1176,7 @@
                         document.querySelector('.currency-btn[data-currency="USDT"]').classList.add('active');
                         selectedCurrency = 'USDT';
                     }
+
 
                     updateInterface();
                 });
