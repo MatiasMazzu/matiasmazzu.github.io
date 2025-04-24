@@ -577,11 +577,11 @@
                     </div>
                 </div>
     
-                <!-- Campo para WhatsApp cuando se selecciona Transferencia -->
-                <div class="form-group" id="whatsappField" style="display: none;">
-                    <label for="whatsappNumber">Número de WhatsApp (para enviar comprobante):</label>
-                    <input type="tel" id="whatsappNumber" placeholder="Ej: +541155667788" pattern="[+][0-9]{10,15}">
-                    <small>Formato: +código de país seguido del número</small>
+                <!-- Campo para Comprobante de Transferencia -->
+                <div class="form-group" id="transferenciaField" style="display: none;">
+                    <label for="comprobanteTrans">Número de comprobante de transferencia:</label>
+                    <input type="text" id="comprobanteTrans" name="comprobanteTrans" placeholder="Ej: 123456789" required>
+                    <small>Ingrese el número o código de comprobante de la transferencia</small>
                 </div>
     
                 <button type="submit" class="btn-submit sale" id="submitButton">Registrar Venta</button>
@@ -1215,7 +1215,7 @@
                 });
             });
 
-            // Event listeners para mensaje de whatsapp
+            // Event listeners para comprobante de transferencia
             paymentBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
                     if (this.classList.contains('disabled')) return;
@@ -1224,12 +1224,17 @@
                     this.classList.add('active');
                     selectedPayment = this.dataset.payment;
 
-                    // Mostrar u ocultar campo de WhatsApp según método de pago
-                    const whatsappField = document.getElementById('whatsappField');
+                    // Mostrar u ocultar campo de comprobante según método de pago
+                    const transferenciaField = document.getElementById('transferenciaField');
                     if (selectedPayment === 'Transferencia') {
-                        whatsappField.style.display = 'block';
+                        transferenciaField.style.display = 'block';
                     } else {
-                        whatsappField.style.display = 'none';
+                        transferenciaField.style.display = 'none';
+                        // Si cambiamos de transferencia a otro método, quitamos el required
+                        const comprobanteInput = document.getElementById('comprobanteTrans');
+                        if (comprobanteInput) {
+                            comprobanteInput.removeAttribute('required');
+                        }
                     }
 
                     // Si se selecciona Crypto, forzar USDT como moneda
@@ -1238,7 +1243,6 @@
                         document.querySelector('.currency-btn[data-currency="USDT"]').classList.add('active');
                         selectedCurrency = 'USDT';
                     }
-
 
                     updateInterface();
                 });
@@ -1441,6 +1445,16 @@
                     date: getFormattedDate()
                 };
 
+                // Añadir comprobante cuando el método de pago es Transferencia
+                if (selectedPayment === 'Transferencia') {
+                    const comprobante = document.getElementById('comprobanteTrans').value;
+                    if (!comprobante) {
+                        alert('Por favor, ingrese el número de comprobante de transferencia.');
+                        return;
+                    }
+                    data.comprobanteTrans = comprobante;
+                }
+
                 console.log('Datos a enviar:', data);
 
                 // Realizar la llamada real al webhook de Make
@@ -1502,6 +1516,9 @@
                             paymentBtns.forEach(b => b.classList.remove('active'));
                             document.querySelector('.payment-btn[data-payment="Efectivo"]').classList.add('active');
                             selectedPayment = 'Efectivo';
+
+                            // Ocultar campo de comprobante de transferencia
+                            document.getElementById('transferenciaField').style.display = 'none';
 
                             // Restablecer moneda a ARS
                             currencyBtns.forEach(b => b.classList.remove('active'));
