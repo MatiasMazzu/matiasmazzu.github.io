@@ -487,12 +487,36 @@
                     <button type="button" class="tab-button" data-category="Producto" data-section="producto-section">Producto</button>
                     <button type="button" class="tab-button" data-category="Singles" data-section="singles-section">Singles</button>
                 </div>
+                
+                <!-- Categorías para "Pago" -->
+                <div class="tab-navigation" id="pagoTabs" style="display: none;">
+                    <button type="button" class="tab-button active" data-category="Cafebar" data-section="cafebar-pago-section">Cafebar</button>
+                    <button type="button" class="tab-button" data-category="Sellado" data-section="sellado-section">Sellado</button>
+                    <button type="button" class="tab-button" data-category="Singles" data-section="singles-pago-section">Singles</button>
+                    <button type="button" class="tab-button" data-category="Mantenimiento" data-section="mantenimiento-section">Mantenimiento</button>
+                    <button type="button" class="tab-button" data-category="Servicios" data-section="servicios-section">Servicios</button>
+                </div>
     
                 <div class="sections-container">
-                    <!-- Sección Cafebar -->
+                    <!-- Sección Cafebar para Venta -->
                     <div id="cafebar-section" class="form-section active">
                         <div class="cafebar-grid" id="cafebarGrid">
                             <!-- Los items se cargarán dinámicamente con JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <!-- Sección Cafebar para Pago -->
+                    <div id="cafebar-pago-section" class="form-section">
+                        <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <div style="flex: 2;">
+                                <textarea id="cafebarPagoDescription" name="cafebarPagoDescription" placeholder="Descripción de la compra de cafebar" rows="3" style="width: 100%;"></textarea>
+                            </div>
+                            <div style="flex: 1;">
+                                <input type="text" id="cafebarPagoPrice" name="cafebarPagoPrice" placeholder="Precio" class="price-input">
+                            </div>
+                            <div style="flex: 0 0 auto;">
+                                <button type="button" class="standard-btn add-to-cart-btn" data-section="cafebarPago">Agregar</button>
+                            </div>
                         </div>
                     </div>
                 
@@ -526,8 +550,24 @@
                         </div>
                         <textarea id="productoDescription" name="productoDescription" placeholder="Descripción detallada del producto (opcional)" style="margin-top: 10px;"></textarea>
                     </div>
+                    
+                    <!-- Sección Sellado (igual que Producto) -->
+                    <div id="sellado-section" class="form-section">
+                        <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <div style="flex: 2;">
+                                <input type="text" id="selladoName" name="selladoName" placeholder="Nombre del producto">
+                            </div>
+                            <div style="flex: 1;">
+                                <input type="text" id="selladoPrice" name="selladoPrice" placeholder="Precio" class="price-input">
+                            </div>
+                            <div style="flex: 0 0 auto;">
+                                <button type="button" class="standard-btn add-to-cart-btn" data-section="sellado">Agregar</button>
+                            </div>
+                        </div>
+                        <textarea id="selladoDescription" name="selladoDescription" placeholder="Descripción detallada del producto (opcional)" style="margin-top: 10px;"></textarea>
+                    </div>
                 
-                    <!-- Sección Singles -->
+                    <!-- Sección Singles para Venta -->
                     <div id="singles-section" class="form-section">
                         <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
                             <div style="flex: 2;">
@@ -538,6 +578,51 @@
                             </div>
                             <div style="flex: 0 0 auto;">
                                 <button type="button" class="standard-btn add-to-cart-btn" data-section="singles">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección Singles para Pago -->
+                    <div id="singles-pago-section" class="form-section">
+                        <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <div style="flex: 2;">
+                                <input type="text" id="singlesPagoDescription" name="singlesPagoDescription" placeholder="Descripción de las cartas">
+                            </div>
+                            <div style="flex: 1;">
+                                <input type="text" id="singlesPagoPrice" name="singlesPagoPrice" placeholder="Precio" class="price-input">
+                            </div>
+                            <div style="flex: 0 0 auto;">
+                                <button type="button" class="standard-btn add-to-cart-btn" data-section="singlesPago">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección Mantenimiento -->
+                    <div id="mantenimiento-section" class="form-section">
+                        <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <div style="flex: 2;">
+                                <input type="text" id="mantenimientoDescription" name="mantenimientoDescription" placeholder="Descripción del mantenimiento">
+                            </div>
+                            <div style="flex: 1;">
+                                <input type="text" id="mantenimientoPrice" name="mantenimientoPrice" placeholder="Precio" class="price-input">
+                            </div>
+                            <div style="flex: 0 0 auto;">
+                                <button type="button" class="standard-btn add-to-cart-btn" data-section="mantenimiento">Agregar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección Servicios -->
+                    <div id="servicios-section" class="form-section">
+                        <div class="form-row" style="display: flex; gap: 10px; margin-bottom: 10px;">
+                            <div style="flex: 2;">
+                                <input type="text" id="serviciosDescription" name="serviciosDescription" placeholder="Descripción del servicio">
+                            </div>
+                            <div style="flex: 1;">
+                                <input type="text" id="serviciosPrice" name="serviciosPrice" placeholder="Precio" class="price-input">
+                            </div>
+                            <div style="flex: 0 0 auto;">
+                                <button type="button" class="standard-btn add-to-cart-btn" data-section="servicios">Agregar</button>
                             </div>
                         </div>
                     </div>
@@ -599,7 +684,8 @@
             // Seleccionar elementos
             const form = document.getElementById('operationForm');
             const operationBtns = document.querySelectorAll('.operation-btn');
-            const categoryTabs = document.querySelectorAll('.tab-button');
+            const ventaTabs = document.getElementById('categoryTabs'); // Contenedor de pestañas de Venta
+            const pagoTabs = document.getElementById('pagoTabs'); // Contenedor de pestañas de Pago
             const paymentBtns = document.querySelectorAll('.payment-btn');
             const currencyBtns = document.querySelectorAll('.currency-btn');
             const cafebarGrid = document.getElementById('cafebarGrid');
@@ -730,6 +816,13 @@
                     price: 3000,
                     icon: 'fas fa-cookie',
                     image: 'https://images.unsplash.com/photo-1706763306932-e6ecaf527136?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'pan-de-queso',
+                    name: 'Pan de Queso',
+                    price: 3000,
+                    icon: 'fas fa-cookie',
+                    image: 'https://plus.unsplash.com/premium_photo-1693086421089-847b0a2724f8?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
                 },
                 {
                     id: 'croissant-jq',
@@ -1007,6 +1100,45 @@
                 submitButton.textContent = `Registrar ${selectedOperation}`;
                 submitButton.className = selectedOperation === 'Venta' ? 'btn-submit sale' : 'btn-submit purchase';
 
+                // Mostrar/ocultar pestañas según el tipo de operación
+                if (selectedOperation === 'Venta') {
+                    ventaTabs.style.display = 'flex';
+                    pagoTabs.style.display = 'none';
+                    
+                    // Actualizar sección activa para Venta
+                    document.querySelectorAll('.form-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // Activar la sección correspondiente a la pestaña seleccionada
+                    const activeTab = ventaTabs.querySelector('.tab-button.active');
+                    if (activeTab) {
+                        document.getElementById(activeTab.dataset.section).classList.add('active');
+                    } else {
+                        // Por defecto, activar la sección Cafebar
+                        document.getElementById('cafebar-section').classList.add('active');
+                        ventaTabs.querySelector('[data-category="Cafebar"]').classList.add('active');
+                    }
+                } else {
+                    ventaTabs.style.display = 'none';
+                    pagoTabs.style.display = 'flex';
+                    
+                    // Actualizar sección activa para Pago
+                    document.querySelectorAll('.form-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // Activar la sección correspondiente a la pestaña seleccionada
+                    const activeTab = pagoTabs.querySelector('.tab-button.active');
+                    if (activeTab) {
+                        document.getElementById(activeTab.dataset.section).classList.add('active');
+                    } else {
+                        // Por defecto, activar la sección Cafebar para Pago
+                        document.getElementById('cafebar-pago-section').classList.add('active');
+                        pagoTabs.querySelector('[data-category="Cafebar"]').classList.add('active');
+                    }
+                }
+
                 // Verificar si la moneda es USDT
                 if (selectedCurrency === 'USDT') {
                     // Para USDT solo se permite crypto
@@ -1035,6 +1167,9 @@
                         }
                     });
                 }
+                
+                // Actualizar atributos required después de cambiar las secciones
+                updateRequiredAttributes();
             }
 
             // Cargar productos de cafetería
@@ -1063,15 +1198,53 @@
                     operationBtns.forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
                     selectedOperation = this.dataset.operation;
+                    
+                    // Resetear categoría seleccionada a Cafebar al cambiar de operación
+                    selectedCategory = 'Cafebar';
+                    
+                    // Resetear pestañas activas
+                    document.querySelectorAll('.tab-button').forEach(tab => {
+                        tab.classList.remove('active');
+                    });
+                    
+                    // Activar pestaña Cafebar por defecto
+                    if (selectedOperation === 'Venta') {
+                        document.querySelector('#categoryTabs [data-category="Cafebar"]').classList.add('active');
+                    } else {
+                        document.querySelector('#pagoTabs [data-category="Cafebar"]').classList.add('active');
+                    }
+                    
                     updateInterface();
                 });
             });
 
-            // Event listeners para pestañas de categoría
-            categoryTabs.forEach(tab => {
+            // Event listeners para pestañas de categoría de Venta
+            document.getElementById('categoryTabs').querySelectorAll('.tab-button').forEach(tab => {
                 tab.addEventListener('click', function () {
                     // Actualizar pestaña activa
-                    categoryTabs.forEach(t => t.classList.remove('active'));
+                    document.getElementById('categoryTabs').querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // Actualizar categoría seleccionada
+                    selectedCategory = this.dataset.category;
+
+                    // Mostrar sección correspondiente
+                    document.querySelectorAll('.form-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+
+                    document.getElementById(this.dataset.section).classList.add('active');
+
+                    // Actualizar atributos required después de cambiar las secciones
+                    setTimeout(updateRequiredAttributes, 0);
+                });
+            });
+            
+            // Event listeners para pestañas de categoría de Pago
+            pagoTabs.querySelectorAll('.tab-button').forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Actualizar pestaña activa
+                    pagoTabs.querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
 
                     // Actualizar categoría seleccionada
@@ -1089,7 +1262,7 @@
                 });
             });
 
-            // Event listeners para los botones de agregar al carrito en Torneo, Producto y Singles
+            // Event listeners for the add to cart buttons
             const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
             addToCartButtons.forEach(button => {
                 button.addEventListener('click', function () {
@@ -1171,6 +1344,129 @@
                         // Limpiar campos
                         document.getElementById('singlesDescription').value = '';
                         document.getElementById('singlesPrice').value = '';
+                    } else if (section === 'cafebarPago') {
+                        // Validar campos
+                        const descripcion = document.getElementById('cafebarPagoDescription').value;
+                        const precioInput = document.getElementById('cafebarPagoPrice').value;
+                        const precio = parseFloat(unformatNumber(precioInput));
+
+                        if (!descripcion || isNaN(precio) || precio <= 0) {
+                            alert('Por favor, complete todos los campos correctamente.');
+                            return;
+                        }
+
+                        // Agregar cafebar pago al carrito
+                        cart.push({
+                            id: 'cafebarPago-' + Date.now(), // ID único
+                            name: descripcion,
+                            price: precio,
+                            category: 'Cafebar',
+                            quantity: 1,
+                            totalPrice: precio
+                        });
+
+                        // Limpiar campos
+                        document.getElementById('cafebarPagoDescription').value = '';
+                        document.getElementById('cafebarPagoPrice').value = '';
+                    } else if (section === 'sellado') {
+                        // Validar campos
+                        const nombre = document.getElementById('selladoName').value;
+                        const precioInput = document.getElementById('selladoPrice').value;
+                        const precio = parseFloat(unformatNumber(precioInput));
+                        const descripcion = document.getElementById('selladoDescription').value;
+
+                        if (!nombre || isNaN(precio) || precio <= 0) {
+                            alert('Por favor, complete al menos el nombre y precio del sellado.');
+                            return;
+                        }
+
+                        // Agregar sellado al carrito
+                        cart.push({
+                            id: 'sellado-' + Date.now(), // ID único
+                            name: nombre,
+                            description: descripcion,
+                            price: precio,
+                            category: 'Sellado',
+                            quantity: 1,
+                            totalPrice: precio
+                        });
+
+                        // Limpiar campos
+                        document.getElementById('selladoName').value = '';
+                        document.getElementById('selladoPrice').value = '';
+                        document.getElementById('selladoDescription').value = '';
+                    } else if (section === 'singlesPago') {
+                        // Validar campos
+                        const descripcion = document.getElementById('singlesPagoDescription').value;
+                        const precioInput = document.getElementById('singlesPagoPrice').value;
+                        const precio = parseFloat(unformatNumber(precioInput));
+
+                        if (!descripcion || isNaN(precio) || precio <= 0) {
+                            alert('Por favor, complete todos los campos correctamente.');
+                            return;
+                        }
+
+                        // Agregar singles pago al carrito
+                        cart.push({
+                            id: 'singlesPago-' + Date.now(), // ID único
+                            name: descripcion,
+                            price: precio,
+                            category: 'Singles',
+                            quantity: 1,
+                            totalPrice: precio
+                        });
+
+                        // Limpiar campos
+                        document.getElementById('singlesPagoDescription').value = '';
+                        document.getElementById('singlesPagoPrice').value = '';
+                    } else if (section === 'mantenimiento') {
+                        // Validar campos
+                        const descripcion = document.getElementById('mantenimientoDescription').value;
+                        const precioInput = document.getElementById('mantenimientoPrice').value;
+                        const precio = parseFloat(unformatNumber(precioInput));
+
+                        if (!descripcion || isNaN(precio) || precio <= 0) {
+                            alert('Por favor, complete todos los campos correctamente.');
+                            return;
+                        }
+
+                        // Agregar mantenimiento al carrito
+                        cart.push({
+                            id: 'mantenimiento-' + Date.now(), // ID único
+                            name: descripcion,
+                            price: precio,
+                            category: 'Mantenimiento',
+                            quantity: 1,
+                            totalPrice: precio
+                        });
+
+                        // Limpiar campos
+                        document.getElementById('mantenimientoDescription').value = '';
+                        document.getElementById('mantenimientoPrice').value = '';
+                    } else if (section === 'servicios') {
+                        // Validar campos
+                        const descripcion = document.getElementById('serviciosDescription').value;
+                        const precioInput = document.getElementById('serviciosPrice').value;
+                        const precio = parseFloat(unformatNumber(precioInput));
+
+                        if (!descripcion || isNaN(precio) || precio <= 0) {
+                            alert('Por favor, complete todos los campos correctamente.');
+                            return;
+                        }
+
+                        // Agregar servicios al carrito
+                        cart.push({
+                            id: 'servicios-' + Date.now(), // ID único
+                            name: descripcion,
+                            price: precio,
+                            category: 'Servicios',
+                            quantity: 1,
+                            totalPrice: precio
+                        });
+
+                        // Limpiar campos
+                        document.getElementById('serviciosDescription').value = '';
+                        document.getElementById('serviciosPrice').value = '';
                     }
 
                     // Actualizar carrito
@@ -1320,7 +1616,10 @@
                 const cafebarItems = cart.filter(item => item.category === 'Cafebar');
                 const torneoItems = cart.filter(item => item.category === 'Torneo');
                 const productoItems = cart.filter(item => item.category === 'Producto');
+                const selladoItems = cart.filter(item => item.category === 'Sellado');
                 const singlesItems = cart.filter(item => item.category === 'Singles');
+                const mantenimientoItems = cart.filter(item => item.category === 'Mantenimiento');
+                const serviciosItems = cart.filter(item => item.category === 'Servicios');
 
                 // Generar descripciones por categoría
                 let descriptions = [];
@@ -1344,10 +1643,28 @@
                         descriptions.push(`${item.name}${item.description ? ` (${item.description})` : ''}`);
                     });
                 }
+                
+                if (selladoItems.length > 0) {
+                    selladoItems.forEach(item => {
+                        descriptions.push(`Sellado: ${item.name}${item.description ? ` (${item.description})` : ''}`);
+                    });
+                }
 
                 if (singlesItems.length > 0) {
                     singlesItems.forEach(item => {
                         descriptions.push(`Singles: ${item.name}`);
+                    });
+                }
+                
+                if (mantenimientoItems.length > 0) {
+                    mantenimientoItems.forEach(item => {
+                        descriptions.push(`Mantenimiento: ${item.name}`);
+                    });
+                }
+                
+                if (serviciosItems.length > 0) {
+                    serviciosItems.forEach(item => {
+                        descriptions.push(`Servicios: ${item.name}`);
                     });
                 }
 
@@ -1501,10 +1818,18 @@
                             document.querySelector('.operation-btn[data-operation="Venta"]').classList.add('active');
                             selectedOperation = 'Venta';
 
+                            // Mostrar pestañas de Venta y ocultar pestañas de Pago
+                            document.getElementById('categoryTabs').style.display = 'flex';
+                            document.getElementById('pagoTabs').style.display = 'none';
+
                             // Restablecer categoría a Cafebar
-                            categoryTabs.forEach(t => t.classList.remove('active'));
-                            document.querySelector('.tab-button[data-category="Cafebar"]').classList.add('active');
+                            document.getElementById('categoryTabs').querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
+                            document.querySelector('#categoryTabs [data-category="Cafebar"]').classList.add('active');
                             selectedCategory = 'Cafebar';
+
+                            // Restablecer pestañas de Pago también
+                            document.getElementById('pagoTabs').querySelectorAll('.tab-button').forEach(t => t.classList.remove('active'));
+                            document.querySelector('#pagoTabs [data-category="Cafebar"]').classList.add('active');
 
                             // Mostrar sección correspondiente
                             document.querySelectorAll('.form-section').forEach(section => {
