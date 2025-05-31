@@ -726,7 +726,7 @@
                     </div>
                 </div>
     
-                <div class="form-group">
+                <div class="form-group" id="paymentMethodSection">
                     <label>Método de Pago:</label>
                     <div class="btn-group">
                         <button type="button" class="standard-btn payment-btn active" data-payment="Efectivo">Efectivo</button>
@@ -735,7 +735,16 @@
                         <button type="button" class="standard-btn payment-btn" data-payment="Crypto">Crypto</button>
                     </div>
                 </div>
-    
+                
+                <!-- Selector de cuenta para pagos -->
+                <div class="form-group" id="paymentAccountField" style="display: none;">
+                    <label for="paymentAccount">Cuenta de pago:</label>
+                    <select id="paymentAccount" name="paymentAccount" class="form-control">
+                        <option value="">Seleccione una cuenta</option>
+                        <!-- Las opciones se cargarán dinámicamente según la moneda seleccionada -->
+                    </select>
+                </div>
+
                 <!-- Campo para Comprobante de Transferencia -->
                 <div class="form-group" id="transferenciaField" style="display: none;">
                     <label for="comprobanteTrans">Número de comprobante de transferencia:</label>
@@ -907,6 +916,27 @@
                     price: 3000,
                     icon: 'fas fa-mug-hot',
                     image: 'https://images.unsplash.com/photo-1495774856032-8b90bbb32b32?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'cafe-lemonie',
+                    name: 'Café + Lemonie',
+                    price: 4800,
+                    icon: 'fas fa-mug-hot',
+                    image: 'https://images.unsplash.com/photo-1515686954815-8667163e4edb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'cafe-cheesecake',
+                    name: 'Café + Cheesecake',
+                    price: 6300,
+                    icon: 'fas fa-mug-hot',
+                    image: 'https://plus.unsplash.com/premium_photo-1678715022349-3861c20bf637?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                },
+                {
+                    id: 'cafe-pan-queso',
+                    name: 'Café + Pan de Queso',
+                    price: 5800,
+                    icon: 'fas fa-mug-hot',
+                    image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
                 },
                 {
                     id: 'delicias',
@@ -1220,6 +1250,9 @@
                 const cartSummary = document.getElementById('cartSummary');
                 const movimientoSection = document.getElementById('movimientoSection');
                 const amountGroup = document.querySelector('.form-group:has(#amount)');
+                const paymentAccountField = document.getElementById('paymentAccountField');
+                const paymentMethodSection = document.getElementById('paymentMethodSection');
+                const transferenciaField = document.getElementById('transferenciaField');
                 
                 if (selectedOperation === 'Movimiento') {
                     console.log('Mostrando sección de Movimiento Plata');
@@ -1229,6 +1262,9 @@
                     pagoTabs.style.display = 'none';
                     sectionsContainer.style.display = 'none';
                     cartSummary.style.display = 'none';
+                    paymentAccountField.style.display = 'none';
+                    paymentMethodSection.style.display = 'none';
+                    transferenciaField.style.display = 'none';
                     
                     // Asegurarse que la sección de movimiento esté visible
                     movimientoSection.style.display = 'block';
@@ -1242,12 +1278,14 @@
                     updateWalletSelectors();
                     
                 } else if (selectedOperation === 'Venta') {
-                    // Para Venta, mostrar pestañas de venta
+                    // Para Venta, mostrar pestañas de venta, métodos de pago y ocultar selector de cuenta de pago
                     ventaTabs.style.display = 'flex';
                     pagoTabs.style.display = 'none';
                     sectionsContainer.style.display = 'block';
                     cartSummary.style.display = 'block';
                     movimientoSection.style.display = 'none';
+                    paymentAccountField.style.display = 'none';
+                    paymentMethodSection.style.display = 'block';
                     
                     if (amountGroup) {
                         amountGroup.style.display = 'block';
@@ -1268,16 +1306,22 @@
                         ventaTabs.querySelector('[data-category="Cafebar"]').classList.add('active');
                     }
                 } else {
-                    // Para Pago, mostrar pestañas de pago
+                    // Para Pago, mostrar pestañas de pago, selector de cuenta de pago y ocultar métodos de pago
                     ventaTabs.style.display = 'none';
                     pagoTabs.style.display = 'flex';
                     sectionsContainer.style.display = 'block';
                     cartSummary.style.display = 'block';
                     movimientoSection.style.display = 'none';
+                    paymentAccountField.style.display = 'block';
+                    paymentMethodSection.style.display = 'none';
+                    transferenciaField.style.display = 'none';
                     
                     if (amountGroup) {
                         amountGroup.style.display = 'block';
                     }
+                    
+                    // Actualizar el selector de cuentas de pago
+                    updatePaymentAccountSelector();
                     
                     // Actualizar sección activa para Pago
                     document.querySelectorAll('.form-section').forEach(section => {
@@ -1295,33 +1339,36 @@
                     }
                 }
 
-                // Verificar si la moneda es USDT
-                if (selectedCurrency === 'USDT') {
-                    // Para USDT solo se permite crypto
-                    paymentBtns.forEach(btn => {
-                        if (btn.dataset.payment !== 'Crypto') {
-                            btn.classList.add('disabled');
-                        } else {
-                            btn.classList.remove('disabled');
-                            btn.classList.add('active');
-                            selectedPayment = 'Crypto';
-                        }
-                    });
-                } else {
-                    // Para otras monedas, habilitar todas las opciones excepto cuando USD está seleccionado
-                    paymentBtns.forEach(btn => {
-                        if (selectedCurrency === 'USD' && btn.dataset.payment === 'Tarjeta') {
-                            btn.classList.add('disabled');
-                            if (selectedPayment === 'Tarjeta') {
-                                // Si tenía seleccionado tarjeta, cambiar a efectivo
-                                selectedPayment = 'Efectivo';
-                                document.querySelector('.payment-btn[data-payment="Efectivo"]').classList.add('active');
-                                btn.classList.remove('active');
+                // Solo aplicar lógica de moneda para ventas (ya que para pagos usamos el selector directo)
+                if (selectedOperation === 'Venta') {
+                    // Verificar si la moneda es USDT
+                    if (selectedCurrency === 'USDT') {
+                        // Para USDT solo se permite crypto
+                        paymentBtns.forEach(btn => {
+                            if (btn.dataset.payment !== 'Crypto') {
+                                btn.classList.add('disabled');
+                            } else {
+                                btn.classList.remove('disabled');
+                                btn.classList.add('active');
+                                selectedPayment = 'Crypto';
                             }
-                        } else {
-                            btn.classList.remove('disabled');
-                        }
-                    });
+                        });
+                    } else {
+                        // Para otras monedas, habilitar todas las opciones excepto cuando USD está seleccionado
+                        paymentBtns.forEach(btn => {
+                            if (selectedCurrency === 'USD' && btn.dataset.payment === 'Tarjeta') {
+                                btn.classList.add('disabled');
+                                if (selectedPayment === 'Tarjeta') {
+                                    // Si tenía seleccionado tarjeta, cambiar a efectivo
+                                    selectedPayment = 'Efectivo';
+                                    document.querySelector('.payment-btn[data-payment="Efectivo"]').classList.add('active');
+                                    btn.classList.remove('active');
+                                }
+                            } else {
+                                btn.classList.remove('disabled');
+                            }
+                        });
+                    }
                 }
                 
                 // Actualizar atributos required después de cambiar las secciones
@@ -1835,6 +1882,11 @@
                     this.classList.add('active');
                     selectedCurrency = this.dataset.currency;
 
+                    // Actualizar selector de cuentas de pago si estamos en modo Pago
+                    if (selectedOperation === 'Pago') {
+                        updatePaymentAccountSelector();
+                    }
+
                     updateInterface();
                 });
             });
@@ -1994,6 +2046,15 @@
 
             // Función para obtener el método de pago en el formato requerido
             function getFormattedPaymentMethod() {
+                // Si es un pago, usar la cuenta seleccionada en el selector
+                if (selectedOperation === 'Pago') {
+                    const paymentAccount = document.getElementById('paymentAccount').value;
+                    if (paymentAccount) {
+                        return paymentAccount;
+                    }
+                }
+                
+                // Para ventas, usar la lógica original
                 if (selectedPayment === 'Tarjeta') {
                     return 'PAYWAY (ARS)';
                 } else if (selectedPayment === 'Efectivo') {
@@ -2133,6 +2194,15 @@
                         isValid = false;
                     }
 
+                    // Validar cuenta de pago para operaciones de Pago
+                    if (selectedOperation === 'Pago') {
+                        const paymentAccount = document.getElementById('paymentAccount').value;
+                        if (!paymentAccount) {
+                            errorMessage = "Por favor, seleccione una cuenta de pago.";
+                            isValid = false;
+                        }
+                    }
+
                     if (!isValid) {
                         alert(errorMessage);
                         return;
@@ -2258,6 +2328,15 @@
 
                 // Ocultar campo de comprobante de transferencia
                 document.getElementById('transferenciaField').style.display = 'none';
+                
+                // Ocultar campo de cuenta de pago
+                document.getElementById('paymentAccountField').style.display = 'none';
+                
+                // Mostrar métodos de pago para ventas
+                const paymentMethodSection = document.getElementById('paymentMethodSection');
+                if (paymentMethodSection) {
+                    paymentMethodSection.style.display = 'block';
+                }
 
                 // Restablecer moneda a ARS
                 currencyBtns.forEach(b => b.classList.remove('active'));
@@ -2601,6 +2680,29 @@
                 } else {
                     return selectedDestinationCurrency;
                 }
+            }
+
+            // Función para actualizar el selector de cuentas de pago
+            function updatePaymentAccountSelector() {
+                const paymentAccountSelect = document.getElementById('paymentAccount');
+                
+                if (!paymentAccountSelect) {
+                    return;
+                }
+                
+                // Limpiar selector
+                paymentAccountSelect.innerHTML = '<option value="">Seleccione una cuenta</option>';
+                
+                // Obtener la lista de billeteras para la moneda seleccionada
+                const walletList = wallets[selectedCurrency] || [];
+                
+                // Agregar opciones al selector
+                walletList.forEach(wallet => {
+                    const option = document.createElement('option');
+                    option.value = wallet;
+                    option.textContent = wallet;
+                    paymentAccountSelect.appendChild(option);
+                });
             }
         });
 
